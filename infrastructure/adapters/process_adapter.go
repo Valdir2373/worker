@@ -34,7 +34,7 @@ func NewProcessAdapter() *ProcessAdapter {
 }
 
 func (p *ProcessAdapter) StartProcess() error {
-	cmd := exec.Command("su-exec", "tor", "tor", "-f", "/etc/tor/torrc")
+	cmd := exec.Command("tor", "-f", "/etc/tor/torrc")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Start(); err != nil {

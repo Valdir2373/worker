@@ -14,8 +14,8 @@ FROM alpine:latest
 
 RUN apk add --no-cache tor ca-certificates su-exec netcat-openbsd \
     && mkdir -p /var/lib/tor \
-    && chown -R tor:tor /var/lib/tor \
-    && chmod 700 /var/lib/tor
+    && chown -R root:root /var/lib/tor \
+    && chmod 755 /var/lib/tor
 
 WORKDIR /app
 

@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net"
+	"strings"
 	"time"
 
 	"golang.org/x/net/proxy"
@@ -75,7 +76,10 @@ func (s *Server) handle(ctx context.Context, clientConn net.Conn) {
 	defer clientConn.Close()
 	clientConn.SetDeadline(time.Now().Add(socks5HandshakeTimeout)) //nolint:errcheck
 	if err := s.negotiateAuth(clientConn); err != nil {
-		log.Printf("socks5: auth falhou: %v", err)
+		// Não loga erros de versão (são health checks: HTTP em porta SOCKS5)
+		if !strings.Contains(err.Error(), "versão") {
+			log.Printf("socks5: auth falhou: %v", err)
+		}
 		return
 	}
 	target, err := s.readRequest(clientConn)
