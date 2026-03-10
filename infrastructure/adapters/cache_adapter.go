@@ -9,7 +9,7 @@ import (
 
 var torCacheFiles = []string{
 	"cached-certs", "cached-microdesc-consensus", "cached-microdescs",
-	"cached-microdescs.new", "state", "diff-cache",
+	"cached-microdescs.new", "state", "diff-cache", "control_auth_cookie",
 }
 
 // CacheAdapter implements ports.ICacheCleaner (TOR cache).

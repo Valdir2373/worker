@@ -76,7 +76,7 @@ func (p *ProcessAdapter) Stop() error {
 	}
 	log.Printf("tor: SIGKILL → PID %d", pid)
 	_ = proc.Signal(syscall.SIGKILL)
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
 	p.clearPID(pid)
 	return nil
 }
