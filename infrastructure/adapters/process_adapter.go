@@ -18,9 +18,9 @@ import (
 
 const (
 	torControlAddr        = "127.0.0.1:9051"
-	torBootstrapTimeout   = 120 * time.Second
-	torKillTimeout        = 10 * time.Second
-	torControlPollInterval = 2 * time.Second
+	torBootstrapTimeout   = 180 * time.Second
+	torKillTimeout        = 15 * time.Second
+	torControlPollInterval = 1 * time.Second
 )
 
 // ProcessAdapter controla o processo do daemon TOR; implementa ports.IProcessController.
@@ -76,7 +76,7 @@ func (p *ProcessAdapter) Stop() error {
 	}
 	log.Printf("tor: SIGKILL → PID %d", pid)
 	_ = proc.Signal(syscall.SIGKILL)
-	time.Sleep(2 * time.Second)
+	time.Sleep(5 * time.Second)
 	p.clearPID(pid)
 	return nil
 }
