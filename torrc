@@ -1,0 +1,11 @@
+SocksPort 9050
+ControlPort 9051
+HashedControlPassword PLACEHOLDER
+DataDirectory /var/lib/tor
+LearnCircuitBuildTimeout 0
+CircuitBuildTimeout 60
+NumEntryGuards 4
+GuardLifetime 2 months
+ConnLimit 1000
+MaxCircuitDirtiness 600
+Log notice stdout

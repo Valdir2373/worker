@@ -1,0 +1,22 @@
+services:
+  worker:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:1080:1080"
+    environment:
+      - USER_PROXY_TOKEN=dev-token-change-in-prod
+      # TOR_CONTROL_PASSWORD vazio = entrypoint gera automaticamente
+      - AUTO_REFRESH_MINUTES=5
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O-", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
