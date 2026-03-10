@@ -1,0 +1,10 @@
+.git/
+.gitignore
+.env
+.env.example
+docker-compose.yml
+entrypoint.sh
+torrc
+README.md
+Dockerfile
+.dockerignore

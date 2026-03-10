@@ -1,9 +1,13 @@
 # ─── Stage 1: build ───────────────────────────────────────────────────────────
 FROM golang:1.22-alpine AS build
 WORKDIR /app
-COPY src/ src/
-RUN cd src && go mod tidy && go mod download
-RUN cd src && CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /worker ./main.go
+COPY go.mod go.sum ./
+RUN go mod download
+COPY main.go ./
+COPY application/ application/
+COPY infrastructure/ infrastructure/
+COPY domain/ domain/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /worker ./main.go
 
 # ─── Stage 2: runtime ─────────────────────────────────────────────────────────
 FROM alpine:latest
