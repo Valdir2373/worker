@@ -1,2 +1,23 @@
-bin/worker
-/worker
+# Binário
+worker
+*.exe
+
+# Go
+/vendor/
+*.test
+*.out
+coverage.html
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
