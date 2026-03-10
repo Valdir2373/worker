@@ -3,6 +3,11 @@
 .env
 .env.example
 docker-compose.yml
+<<<<<<< HEAD
+=======
+entrypoint.sh
+torrc
+>>>>>>> 05aaed383adae449924bb3deb9d6a1e62ac41678
 README.md
 Dockerfile
 .dockerignore
