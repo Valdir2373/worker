@@ -4,10 +4,10 @@ import (
 	"context"
 	"log"
 
-	"worker/application/dto"
-	serverhttp "worker/infrastructure/server/http"
-	serverws "worker/infrastructure/server/ws"
-	"worker/infrastructure/service"
+	"worker/src/application/dto"
+	serverhttp "worker/src/infrastructure/server/http"
+	serverws "worker/src/infrastructure/server/ws"
+	"worker/src/infrastructure/service"
 )
 
 // NewWorkerApp é uma agulha de DI: orquestra os módulos e compõe WorkerService.

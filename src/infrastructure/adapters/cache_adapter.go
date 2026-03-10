@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 var torCacheFiles = []string{

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"golang.org/x/net/proxy"
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 var bypassHosts = []string{"host.docker.internal", "localhost", "127.0.0.1"}

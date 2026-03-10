@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"worker/application/dto"
+	"worker/src/application/dto"
 )
 
 // Load lê variáveis de ambiente, aplica defaults e valida. Retorna erro descritivo se inválido.

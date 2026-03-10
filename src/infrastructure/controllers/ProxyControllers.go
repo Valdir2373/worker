@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"worker/application/worker/ports"
-	serverhttp "worker/infrastructure/server/http"
+	"worker/src/application/worker/ports"
+	serverhttp "worker/src/infrastructure/server/http"
 )
 
 // ProxyControllers encapsula os controllers do proxy e registra suas rotas.

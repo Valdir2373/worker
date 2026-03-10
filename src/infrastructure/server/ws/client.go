@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"worker/domain"
+	"worker/src/domain"
 )
 
 var backoffDurations = []time.Duration{

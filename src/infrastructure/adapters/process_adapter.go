@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 const (

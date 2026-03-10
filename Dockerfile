@@ -2,9 +2,9 @@
 FROM golang:1.22-alpine AS build
 WORKDIR /app
 COPY go.mod go.sum ./
-COPY src/ ./
+COPY . .
 RUN go mod tidy && go mod download
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /worker ./main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /worker ./src/main.go
 
 # ─── Stage 2: runtime ─────────────────────────────────────────────────────────
 FROM alpine:latest

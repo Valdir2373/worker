@@ -8,12 +8,12 @@ import (
 	"strconv"
 	"time"
 
-	"worker/application/dto"
-	"worker/application/worker/ports"
-	"worker/domain"
-	serverhttp "worker/infrastructure/server/http"
-	serversocks5 "worker/infrastructure/server/socks5"
-	serverws "worker/infrastructure/server/ws"
+	"worker/src/application/dto"
+	"worker/src/application/worker/ports"
+	"worker/src/domain"
+	serverhttp "worker/src/infrastructure/server/http"
+	serversocks5 "worker/src/infrastructure/server/socks5"
+	serverws "worker/src/infrastructure/server/ws"
 )
 
 // WorkerService orquestra o ciclo de vida do Worker: proxy (IProxyManager), SOCKS5, HTTP e WebSocket.

@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"time"
 
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 type ipResponse struct {

@@ -3,7 +3,7 @@ package ws
 import (
 	"context"
 
-	"worker/domain"
+	"worker/src/domain"
 )
 
 // IClientGateway é a interface do gateway de mensagens WebSocket (transporte). Fica na infraestrutura.

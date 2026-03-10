@@ -4,13 +4,13 @@ import (
 	"log"
 	"strconv"
 
-	"worker/application/dto"
-	"worker/application/worker/ports"
-	"worker/application/worker/usecase"
-	"worker/infrastructure/adapters"
-	"worker/infrastructure/controllers"
-	serverhttp "worker/infrastructure/server/http"
-	serversocks5 "worker/infrastructure/server/socks5"
+	"worker/src/application/dto"
+	"worker/src/application/worker/ports"
+	"worker/src/application/worker/usecase"
+	"worker/src/infrastructure/adapters"
+	"worker/src/infrastructure/controllers"
+	serverhttp "worker/src/infrastructure/server/http"
+	serversocks5 "worker/src/infrastructure/server/socks5"
 )
 
 // ProxyModule encapsula toda a composição do domínio proxy:

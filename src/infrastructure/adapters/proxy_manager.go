@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"worker/application/worker/ports"
-	"worker/application/worker/usecase"
+	"worker/src/application/worker/ports"
+	"worker/src/application/worker/usecase"
 )
 
 // ProxyManager implementa ports.IProxyManager: delega Start/Stop/Restart para use cases; CurrentIP/FetchIP/Dialer/IsRunning para estado.

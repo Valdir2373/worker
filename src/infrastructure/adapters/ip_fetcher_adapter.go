@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 const ipFetchTimeout = 30 * time.Second

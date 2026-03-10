@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"golang.org/x/net/proxy"
-	"worker/application/worker/ports"
+	"worker/src/application/worker/ports"
 )
 
 const (

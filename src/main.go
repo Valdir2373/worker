@@ -7,8 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"worker/infrastructure/config"
-	"worker/infrastructure/modules"
+	"worker/src/infrastructure/config"
+	"worker/src/infrastructure/modules"
 )
 
 func main() {

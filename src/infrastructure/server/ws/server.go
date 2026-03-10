@@ -10,7 +10,7 @@ import (
 	"sync/atomic"
 
 	"github.com/gorilla/websocket"
-	"worker/domain"
+	"worker/src/domain"
 )
 
 var defaultUpgrader = &websocket.Upgrader{

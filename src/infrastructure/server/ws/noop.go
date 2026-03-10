@@ -3,7 +3,7 @@ package ws
 import (
 	"context"
 
-	"worker/domain"
+	"worker/src/domain"
 )
 
 type NoOpClient struct {
