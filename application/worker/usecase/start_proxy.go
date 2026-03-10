@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net"
 	"time"
 
 	"worker/application/worker/ports"
@@ -12,6 +13,7 @@ import (
 const (
 	pollIPTimeout  = 120 * time.Second
 	pollIPInterval = 2 * time.Second
+	socksReadyTimeout = 30 * time.Second
 )
 
 // StartProxyUseCase sobe o proxy, espera estar pronto e descobre o IP de saída.
@@ -38,6 +40,9 @@ func (uc *StartProxyUseCase) Run(ctx context.Context) (dialer ports.IContextDial
 	if err := uc.process.WaitReady(ctx); err != nil {
 		return nil, nil, fmt.Errorf("waitReady: %w", err)
 	}
+	if err := uc.waitSocksReady(ctx); err != nil {
+		return nil, nil, fmt.Errorf("waitSocksReady: %w", err)
+	}
 	ip, err := uc.pollIP(ctx, ipFetcher)
 	if err != nil {
 		return nil, nil, fmt.Errorf("pollIP: %w", err)
@@ -45,6 +50,26 @@ func (uc *StartProxyUseCase) Run(ctx context.Context) (dialer ports.IContextDial
 	ipFetcher.SetCurrentIP(ip)
 	log.Printf("proxy: pronto — IP de saída: %s", ip)
 	return dialer, ipFetcher, nil
+}
+
+func (uc *StartProxyUseCase) waitSocksReady(ctx context.Context) error {
+	log.Printf("proxy: aguardando SOCKS5 127.0.0.1:9050...")
+	deadline := time.Now().Add(socksReadyTimeout)
+	for time.Now().Before(deadline) {
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+		}
+		conn, err := net.DialTimeout("tcp", "127.0.0.1:9050", 2*time.Second)
+		if err == nil {
+			conn.Close()
+			log.Printf("proxy: SOCKS5 pronto")
+			return nil
+		}
+		time.Sleep(500 * time.Millisecond)
+	}
+	return fmt.Errorf("SOCKS5 não disponível após %v", socksReadyTimeout)
 }
 
 func (uc *StartProxyUseCase) pollIP(ctx context.Context, ipFetcher ports.IIPFetcher) (string, error) {
