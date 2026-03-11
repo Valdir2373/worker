@@ -2,8 +2,8 @@ services:
   worker:
     build: .
     ports:
-      - "127.0.0.1:8080:8080"
-      - "127.0.0.1:1080:1080"
+      - "8080:8080"
+      - "1080:1080"
     environment:
       - USER_PROXY_TOKEN=dev-token-change-in-prod
       # TOR_CONTROL_PASSWORD vazio = entrypoint gera automaticamente
